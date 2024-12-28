@@ -22,7 +22,7 @@ pipeline {
         REGISTRY_CREDENTIALS = credentials('dockerhub')
       }
       steps {
-        withCredentials([string(credentialsId: 'dockerhub')]) {
+        withCredentials([usernamePassword(credentialsId: 'dockerhub')]) {
             sh '''
                 cd demo-java-app && docker build -t ${DOCKER_IMAGE} .
                 docker login -u ${Username} -p ${Password}
