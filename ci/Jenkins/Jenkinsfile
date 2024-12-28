@@ -26,7 +26,7 @@ pipeline {
             sh '''
                 cd demo-java-app && docker build -t ${DOCKER_IMAGE} .
                 docker login -u $username -p $password
-                docker push artempuzikov/demo-java-app
+                docker push ${DOCKER_IMAGE}
           '''
         }
       }
