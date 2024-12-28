@@ -18,7 +18,7 @@ pipeline {
     }
     stage('Build and Push Docker Image') {
       environment {
-        DOCKER_IMAGE = "demo-java-app"
+        DOCKER_IMAGE = "demo-java-app:latest"
         REGISTRY_CREDENTIALS = credentials('dockerhub')
       }
       steps {
@@ -26,7 +26,7 @@ pipeline {
             sh '''
                 cd demo-java-app && docker build -t ${DOCKER_IMAGE} .
                 docker login -u $username -p $password
-                docker push ${DOCKER_IMAGE}
+                docker push artempuzikov/${DOCKER_IMAGE}
           '''
         }
       }
