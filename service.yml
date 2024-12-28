@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   name: demo-app-deployment
   labels:
-    app: demo-app
+    app: demoapp
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: demo-app
+      app: demoapp
   template:
     metadata:
       labels:
-        app: demo-app
+        app: demoapp
     spec:
       containers:
-      - name: demo-app
+      - name: demoapp
         image: artempuzikov/demo-java-app:latest
         ports:
         - containerPort: 3000
@@ -26,10 +26,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: demoa-app-service
+  name: demoaapp-service
 spec:
   selector:
-    app: demo-app
+    app: demoapp
   type: LoadBalancer
   ports:
   - protocol: TCP
